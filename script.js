@@ -35,3 +35,18 @@ function sierpinski(p1, p2, p3, depth){
     }
 }
 
+function animateFractal(depth) {
+    ctx.clearRect(0,0, canvasWidth, canvasHeight)
+
+    const p1 = { x: canvas.width / 2, y: 20}
+    const p2 = {x: 20, y: canvas.height - 20}
+    const p3 = { x: canvas.width - 20, y: canvas.height - 20}
+
+    sierpinski(p1, p2, p3, depth)
+
+    setTimeout(() => {
+        animateFractal((depth + 1) % 8)
+    }, 1000)
+}
+
+animateFractal(0)
